@@ -1,0 +1,23 @@
+version: '3.0'
+services:
+  golambda_vertical:
+    build:
+      context: .
+      # https://github.com/goibibo/diana_lambda/tree/deploy_2_0
+      dockerfile: Dockerfile
+    environment:
+      - ENV_TYPE=local
+      - LOG_LEVEL=DEBUG
+      - DJ_WORKERS=8
+      - REDIS_URL=redis://redis_db:6379
+    ports:
+      - "8001:80"
+    expose:
+      - "8001"
+      - "80"
+    volumes:
+      - .:/usr/local/goibibo/source/diana_lambda/vertical
+    links:
+      - redis_db   
+  redis_db:
+    image: redis
