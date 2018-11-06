@@ -1,19 +1,14 @@
 import logging
 from datetime import datetime
-from cache_managment.redis_layer import CachingScope
+#from cache_managment.redis_layer import CachingScope
 
 from golambda.Action import GoibiboAction
-from gocash_lambda.golambda_vertical.goibibo.gocash.intents import GoCashCashbackNotReceived, GiftNotReceived, GocashBalance, GocashTandC, \
-    GocashRedemption, ReactUpgrade
+from .intents import *
 from golambda.middleware.booking import BookingMiddleware
 from golambda.Lambda import Lambda
-from gocash_lambda.golambda_vertical.goibibo.gocash.load import GoCashLoadUPI, GoCashLoadUPIInitiate, GoCashLoadUPIComplete
+from .load import GoCashLoadUPI, GoCashLoadUPIInitiate, GoCashLoadUPIComplete
 from golambda.response.Response import Message, Response
-
-from gocash_lambda.golambda_vertical.goibibo.gocash import intents
-
-from golambda.middleware.booking import BookingMiddleware
-
+from  golambda.middleware.booking import BookingMiddleware
 from golambda.middleware.gocash import GocashMiddleware
 import requests
 import traceback
@@ -233,7 +228,7 @@ class GoCashCashbackNotReceivedAction(GoibiboAction):
         pass
 
 
-intents.GoCashCashbackNotReceived.register_action(GoCashCashbackNotReceivedAction, "default")
+GoCashCashbackNotReceived.register_action(GoCashCashbackNotReceivedAction, "default")
 
 
 class GiftNotReceivedAction(GoibiboAction):
@@ -335,8 +330,7 @@ class GiftNotReceivedAction(GoibiboAction):
     def default_response(self):
         pass
 
-
-intents.GiftNotReceived.register_action(GiftNotReceivedAction, "default")
+GiftNotReceived.register_action(GiftNotReceivedAction, "default")
 
 
 class GocashBalanceAction(GoibiboAction):
@@ -394,7 +388,7 @@ class GocashBalanceAction(GoibiboAction):
     def default_response(self):
         pass
 
-intents.GocashBalance.register_action(GocashBalanceAction, "default")
+GocashBalance.register_action(GocashBalanceAction, "default")
 
 
 class GocashTandCAction(GoibiboAction):
@@ -419,7 +413,7 @@ class GocashTandCAction(GoibiboAction):
         pass
 
 
-intents.GocashTandC.register_action(GocashTandCAction, "default")
+GocashTandC.register_action(GocashTandCAction, "default")
 
 
 class GocashRedemptionAction(GoibiboAction):
@@ -442,7 +436,7 @@ class GocashRedemptionAction(GoibiboAction):
     def default_response(self):
         pass
 
-intents.GocashRedemption.register_action(GocashRedemptionAction, "default")
+GocashRedemption.register_action(GocashRedemptionAction, "default")
 
 
 class GocashSummaryAction(GoibiboAction):
@@ -484,7 +478,7 @@ class GocashSummaryAction(GoibiboAction):
     def default_response(self):
         pass
 
-intents.GocashSummary.register_action(GocashSummaryAction, 'default')
+GocashSummary.register_action(GocashSummaryAction, 'default')
 
 
 class WhatIsGocashFAQAction(GoibiboAction):
@@ -511,7 +505,7 @@ class WhatIsGocashFAQAction(GoibiboAction):
     def default_response(self):
         pass
 
-intents.WhatIsGocashFAQ.register_action(WhatIsGocashFAQAction, "default")
+WhatIsGocashFAQ.register_action(WhatIsGocashFAQAction, "default")
 
 
 class WhatIsGocashPlusFAQAction(GoibiboAction):
@@ -536,7 +530,7 @@ class WhatIsGocashPlusFAQAction(GoibiboAction):
     def default_response(self):
         pass
 
-intents.WhatIsGocashPlusFAQ.register_action(WhatIsGocashPlusFAQAction, "default")
+WhatIsGocashPlusFAQ.register_action(WhatIsGocashPlusFAQAction, "default")
 
 
 class GocashPlusExpiryFAQAction(GoibiboAction):
@@ -558,7 +552,7 @@ class GocashPlusExpiryFAQAction(GoibiboAction):
     def default_response(self):
         pass
 
-intents.GocashPlusExpiryFAQ.register_action(GocashPlusExpiryFAQAction, "default")
+GocashPlusExpiryFAQ.register_action(GocashPlusExpiryFAQAction, "default")
 
 
 class GocashEarnFAQAction(GoibiboAction):
@@ -588,7 +582,7 @@ class GocashEarnFAQAction(GoibiboAction):
     def default_response(self):
         pass
 
-intents.GocashEarnFAQ.register_action(GocashEarnFAQAction, "default")
+GocashEarnFAQ.register_action(GocashEarnFAQAction, "default")
 
 
 class ReferralProgramFAQAction(GoibiboAction):
@@ -618,7 +612,7 @@ class ReferralProgramFAQAction(GoibiboAction):
     def default_response(self):
         pass
 
-intents.ReferralProgramFAQ.register_action(ReferralProgramFAQAction, "default")
+ReferralProgramFAQ.register_action(ReferralProgramFAQAction, "default")
 
 
 class GocashSafetyFAQAction(GoibiboAction):
@@ -642,7 +636,7 @@ class GocashSafetyFAQAction(GoibiboAction):
     def default_response(self):
         pass
 
-intents.GocashSafetyFAQ.register_action(GocashSafetyFAQAction, "default")
+GocashSafetyFAQ.register_action(GocashSafetyFAQAction, "default")
 
 
 class GocashNotAvailableFAQAction(GoibiboAction):
@@ -663,7 +657,7 @@ class GocashNotAvailableFAQAction(GoibiboAction):
     def default_response(self):
         pass
 
-intents.GocashNotAvailableFAQ.register_action(GocashNotAvailableFAQAction, "default")
+GocashNotAvailableFAQ.register_action(GocashNotAvailableFAQAction, "default")
 
 
 class GocashBalanceHowToFAQAction(GoibiboAction):
@@ -684,7 +678,7 @@ class GocashBalanceHowToFAQAction(GoibiboAction):
     def default_response(self):
         pass
 
-intents.GocashBalanceHowToFAQ.register_action(GocashBalanceHowToFAQAction, "default")
+GocashBalanceHowToFAQ.register_action(GocashBalanceHowToFAQAction, "default")
 
 
 class FraudReportingFAQAction(GoibiboAction):
@@ -708,7 +702,7 @@ class FraudReportingFAQAction(GoibiboAction):
     def default_response(self):
         pass
 
-intents.FraudReportingFAQ.register_action(FraudReportingFAQAction, "default")
+FraudReportingFAQ.register_action(FraudReportingFAQAction, "default")
 
 
 class GocashPromoLimitFAQAction(GoibiboAction):
@@ -730,7 +724,7 @@ class GocashPromoLimitFAQAction(GoibiboAction):
     def default_response(self):
         pass
 
-intents.GocashPromoLimitFAQ.register_action(GocashPromoLimitFAQAction, "default")
+GocashPromoLimitFAQ.register_action(GocashPromoLimitFAQAction, "default")
 
 
 class GocashPlusLimitFAQAction(GoibiboAction):
@@ -752,7 +746,7 @@ class GocashPlusLimitFAQAction(GoibiboAction):
     def default_response(self):
         pass
 
-intents.GocashPlusLimitFAQ.register_action(GocashPlusLimitFAQAction, "default")
+GocashPlusLimitFAQ.register_action(GocashPlusLimitFAQAction, "default")
 
 
 class PromoBucketDifferenceFAQAction(GoibiboAction):
@@ -774,7 +768,7 @@ class PromoBucketDifferenceFAQAction(GoibiboAction):
     def default_response(self):
         pass
 
-intents.PromoBucketDifferenceFAQ.register_action(PromoBucketDifferenceFAQAction, "default")
+PromoBucketDifferenceFAQ.register_action(PromoBucketDifferenceFAQAction, "default")
 
 
 class GocashTransferFAQAction(GoibiboAction):
@@ -1010,16 +1004,15 @@ class RefundNonPromoComplete(GoibiboAction):
 
 
 
-intents.EarnMore.register_action(EarnMoreAction, "default")
+EarnMore.register_action(EarnMoreAction, "default")
 
 
 
 #intents.GocashTransferFAQ.register_action(GocashTransferFAQAction, "default")
-intents.GoCashLoadUPI.register_action(GoCashLoadUPI, "default")
-intents.GoCashLoadUPI.register_action(GoCashLoadUPIInitiate, "initiate")
-intents.GoCashLoadUPI.register_action(GoCashLoadUPIComplete, "complete")
+#GoCashLoadUPI.register_action(GoCashLoadUPI, "default")
+#GoCashLoadUPI.register_action(GoCashLoadUPIInitiate, "initiate")
+#GoCashLoadUPI.register_action(GoCashLoadUPIComplete, "complete")
 ReactUpgrade.register_action(ReactUpgradeAction,'default')
 ReactUpgrade.register_action(ReactUpgradeClaimAction,'claim')
-intents.RefundNonPromo.register_action(RefundNonPromoEligible, 'default')
-
-intents.RefundNonPromo.register_action(RefundNonPromoComplete, 'complete')
+RefundNonPromo.register_action(RefundNonPromoEligible, 'default')
+RefundNonPromo.register_action(RefundNonPromoComplete, 'complete')

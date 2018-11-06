@@ -16,4 +16,5 @@ COPY . /usr/local/goibibo/source/diana_lambda/vertical/
 EXPOSE 80
 
 #RUN ["chmod", "+x", "/docker-entrypoint.sh"]
-CMD ["/usr/bin/supervisord", "-n"]
+#CMD ["/usr/bin/supervisord", "-n"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:80"]
